@@ -54,7 +54,7 @@ def run_colmap(image_path, matcher_type, interval, model_type):
 
     # Feature extraction with enforced single camera model and PINHOLE model
     commands = [
-        f"colmap feature_extractor --image_path {image_path} --database_path {database_path} --ImageReader.single_camera 1 --ImageReader.camera_model PINHOLE --SiftExtraction.use_gpu 1",
+        f"colmap feature_extractor --image_path {image_path} --database_path {database_path} --ImageReader.single_camera 1 --ImageReader.camera_model PINHOLE ,
         f"colmap {matcher_type} --database_path {database_path}",
         f"glomap mapper --database_path {database_path} --image_path {image_path} --output_path {os.path.join(distorted_folder, 'sparse')} --TrackEstablishment.max_num_tracks 5000"
     ]
